@@ -44,6 +44,8 @@ public class RobotController : Agent
 
         // The distance between the agent and the target
         sensor.AddObservation(Vector3.Distance(TargetTransform.localPosition, transform.localPosition));
+    
+        //Crosswalk position needed
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -93,9 +95,10 @@ public class RobotController : Agent
                 break;
         }
 
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        transform.Translate(Vector3.forward * speed * Time.fixedDeltaTime);
 
         AddReward(-0.01f);
+        //
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -109,5 +112,6 @@ public class RobotController : Agent
             AddReward(1);
             EndEpisode();
         }
+        //Crosswalk etc.  Crosswalk trigger
     }
 }
