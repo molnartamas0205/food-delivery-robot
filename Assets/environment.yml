@@ -1,0 +1,6 @@
+name: unity
+channels:
+  - defaults
+dependencies:
+  - python=3.7
+prefix: C:\Users\molna\anaconda3\envs\unity
