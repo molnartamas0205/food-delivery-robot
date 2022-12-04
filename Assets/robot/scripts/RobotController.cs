@@ -31,14 +31,14 @@ public class RobotController : Agent
     }
     public override void OnEpisodeBegin()
     {
-        transform.localPosition = new Vector3(-21.6f, 0.3f, 20);
+        transform.localPosition = new Vector3(-20.4f, 0.3f, 20);
 
         // Generate a random position for the target prefab 
-        /*float target_xPosition = UnityEngine.Random.Range(-26, -21);
-        float target_zPosition = UnityEngine.Random.Range(47, 20);*/
+        float target_xPosition = UnityEngine.Random.Range(-27.8f, -27.8f);
+        float target_zPosition = UnityEngine.Random.Range(47, 20);
 
         // Assign the randomly generated position to the target prefab
-        TargetTransform.localPosition = new Vector3(-23, 1.0f, 26); //target_xPosition, 1.0f, target_zPosition
+        TargetTransform.localPosition = new Vector3(target_xPosition, 1.0f, target_zPosition);
 
         // Generate a random position for the crosswalk prefab 
         //float crosswalk_xPosition = UnityEngine.Random.Range(24, -2);

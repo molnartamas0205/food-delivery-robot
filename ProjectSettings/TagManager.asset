@@ -7,6 +7,7 @@ TagManager:
   - Target
   - Wall
   - Crosswalk
+  - Sidewalk
   layers:
   - Default
   - TransparentFX
