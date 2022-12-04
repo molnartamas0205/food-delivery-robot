@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1670168042",
+        "python_version": "3.7.15 (default, Nov  9 2022, 10:44:37) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\molna\\anaconda3\\envs\\unity\\Scripts\\mlagents-learn MoveToTarget.yaml --run-id=crosswalkobservtest1",
+        "mlagents_version": "0.28.0",
+        "mlagents_envs_version": "0.28.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.21.6",
+        "end_time_seconds": "1670168063"
+    },
+    "total": 21.017598000000003,
+    "count": 1,
+    "self": 0.01557860000000133,
+    "children": {
+        "run_training.setup": {
+            "total": 0.13530980000000015,
+            "count": 1,
+            "self": 0.13530980000000015
+        },
+        "TrainerController.start_learning": {
+            "total": 20.8667096,
+            "count": 1,
+            "self": 0.0005420999999969922,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 20.866152600000003,
+                    "count": 1,
+                    "self": 20.866152600000003
+                },
+                "trainer_threads": {
+                    "total": 1.7999999997186933e-06,
+                    "count": 1,
+                    "self": 1.7999999997186933e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 1.3100000000321188e-05,
+                    "count": 1,
+                    "self": 1.3100000000321188e-05
+                }
+            }
+        }
+    }
+}

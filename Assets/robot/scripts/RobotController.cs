@@ -6,12 +6,6 @@ using Unity.MLAgents;
 using Unity.MLAgents.Actuators;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
-//
-//
-//
-// ROBOT NEEDS RESPAWN AFTER ENDEPISODE!!!!!!!
-//
-//
 
 public class RobotController : Agent
 {
@@ -19,8 +13,9 @@ public class RobotController : Agent
     public float speed = 5f;
 
     public Transform TargetTransform;
-    
-    //public Transform CrosswalkTransform;
+    public Transform CrosswalkTransform;
+    public Transform SidewalkTransform;
+    public Transform StreetTransform;
 
     private enum ACTIONS
     {
@@ -60,12 +55,26 @@ public class RobotController : Agent
         // The distance between the agent and the target
         sensor.AddObservation(Vector3.Distance(TargetTransform.localPosition, transform.localPosition));
 
+        // Sidewalk position needed
+        sensor.AddObservation(SidewalkTransform.localPosition.x);
+        sensor.AddObservation(SidewalkTransform.localPosition.y);
+
+        // The distance between the agent and the sidewalk
+        sensor.AddObservation(Vector3.Distance(SidewalkTransform.localPosition, transform.localPosition));
+
+        // Street position needed
+        sensor.AddObservation(StreetTransform.localPosition.x);
+        sensor.AddObservation(StreetTransform.localPosition.y);
+
+        // The distance between the agent and the street
+        sensor.AddObservation(Vector3.Distance(StreetTransform.localPosition, transform.localPosition));
+
         //Crosswalk position needed
-       // sensor.AddObservation(CrosswalkTransform.localPosition.x);
-       // sensor.AddObservation(CrosswalkTransform.localPosition.y);
+        sensor.AddObservation(CrosswalkTransform.localPosition.x);
+        sensor.AddObservation(CrosswalkTransform.localPosition.y);
 
         // The distance between the agent and the crosswalk
-        //sensor.AddObservation(Vector3.Distance(CrosswalkTransform.localPosition, transform.localPosition));
+        sensor.AddObservation(Vector3.Distance(CrosswalkTransform.localPosition, transform.localPosition));
     }
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -127,10 +136,25 @@ public class RobotController : Agent
             AddReward(-1);
             EndEpisode();
         }
+        /*else if (collision.collider.tag == "Sidewalk")
+        {
+            AddReward(0.005f);
+            //Debug.Log("Found" + SidewalkTransform);
+        }*/
+        else if (collision.collider.tag == "Crosswalk")
+        {
+            AddReward(0.09f);
+            //Debug.Log("Found" + CrosswalkTransform);
+        }
+        else if (collision.collider.tag == "Street")
+        {
+            AddReward(-0.09f);
+            //Debug.Log("Found" + StreetTransform);
+        }
         else if (collision.collider.tag == "Target")
         {
             AddReward(1);
-            Debug.Log("Found" + TargetTransform);
+            //Debug.Log("Found" + TargetTransform);
             EndEpisode();
         }
         //Crosswalk etc.  Crosswalk trigger

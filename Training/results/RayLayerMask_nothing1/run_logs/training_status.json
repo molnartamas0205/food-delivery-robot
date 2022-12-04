@@ -1,0 +1,29 @@
+{
+    "MoveToTarget": {
+        "checkpoints": [
+            {
+                "steps": 4413,
+                "file_path": "results\\RayLayerMask_nothing1\\MoveToTarget\\MoveToTarget-4413.onnx",
+                "reward": -5.353333115577698,
+                "creation_time": 1670173636.741523,
+                "auxillary_file_paths": [
+                    "results\\RayLayerMask_nothing1\\MoveToTarget\\MoveToTarget-4413.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 4413,
+            "file_path": "results\\RayLayerMask_nothing1\\MoveToTarget.onnx",
+            "reward": -5.353333115577698,
+            "creation_time": 1670173636.741523,
+            "auxillary_file_paths": [
+                "results\\RayLayerMask_nothing1\\MoveToTarget\\MoveToTarget-4413.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}
