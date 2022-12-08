@@ -14,8 +14,8 @@ public class RobotController : Agent
 
     public Transform TargetTransform;
     public Transform CrosswalkTransform;
-    public Transform SidewalkTransform;
-    public Transform StreetTransform;
+    public Transform SidewalkLeftTransform;
+    //public Transform StreetTransform;
 
     private enum ACTIONS
     {
@@ -30,7 +30,7 @@ public class RobotController : Agent
 
         // Generate a random position for the target prefab 
         float target_xPosition = UnityEngine.Random.Range(-27.8f, -27.8f);
-        float target_zPosition = UnityEngine.Random.Range(47, 20);
+        float target_zPosition = UnityEngine.Random.Range(47, 29.5f);
 
         // Assign the randomly generated position to the target prefab
         TargetTransform.localPosition = new Vector3(target_xPosition, 1.0f, target_zPosition);
@@ -55,19 +55,19 @@ public class RobotController : Agent
         // The distance between the agent and the target
         sensor.AddObservation(Vector3.Distance(TargetTransform.localPosition, transform.localPosition));
 
-        // Sidewalk position needed
-        sensor.AddObservation(SidewalkTransform.localPosition.x);
-        sensor.AddObservation(SidewalkTransform.localPosition.y);
+        // SidewalkLeft position needed
+        sensor.AddObservation(SidewalkLeftTransform.localPosition.x);
+        sensor.AddObservation(SidewalkLeftTransform.localPosition.y);
 
-        // The distance between the agent and the sidewalk
-        sensor.AddObservation(Vector3.Distance(SidewalkTransform.localPosition, transform.localPosition));
+        // The distance between the agent and the SidewalkLeft
+        sensor.AddObservation(Vector3.Distance(SidewalkLeftTransform.localPosition, transform.localPosition));
 
-        // Street position needed
+        /*// Street position needed
         sensor.AddObservation(StreetTransform.localPosition.x);
         sensor.AddObservation(StreetTransform.localPosition.y);
 
         // The distance between the agent and the street
-        sensor.AddObservation(Vector3.Distance(StreetTransform.localPosition, transform.localPosition));
+        sensor.AddObservation(Vector3.Distance(StreetTransform.localPosition, transform.localPosition));*/
 
         //Crosswalk position needed
         sensor.AddObservation(CrosswalkTransform.localPosition.x);
@@ -95,10 +95,10 @@ public class RobotController : Agent
         {
             actions[0] = (int)ACTIONS.FORWARD;
         }
-        else if (vertical == -1)
+        /*else if (vertical == -1)
         {
             actions[0] = (int)ACTIONS.BACKWARD;
-        }
+        }*/
         else
         {
             actions[0] = 3;
@@ -141,15 +141,21 @@ public class RobotController : Agent
             AddReward(0.005f);
             //Debug.Log("Found" + SidewalkTransform);
         }*/
+        else if (collision.collider.tag == "SideWalkLeft")
+        {
+            AddReward(0.03f);
+            //Debug.Log("Found" + SidewalkLeftTransform);
+        }
+        /*else if (collision.collider.tag == "Street")
+        {
+            AddReward(-0.1f);
+            //Debug.Log("Found" + StreetTransform);
+            //EndEpisode();
+        }*/
         else if (collision.collider.tag == "Crosswalk")
         {
-            AddReward(0.09f);
+            AddReward(0.5f);
             //Debug.Log("Found" + CrosswalkTransform);
-        }
-        else if (collision.collider.tag == "Street")
-        {
-            AddReward(-0.09f);
-            //Debug.Log("Found" + StreetTransform);
         }
         else if (collision.collider.tag == "Target")
         {
@@ -157,6 +163,5 @@ public class RobotController : Agent
             //Debug.Log("Found" + TargetTransform);
             EndEpisode();
         }
-        //Crosswalk etc.  Crosswalk trigger
     }
 }

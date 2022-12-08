@@ -1,0 +1,29 @@
+{
+    "MoveToTarget": {
+        "checkpoints": [
+            {
+                "steps": 20004,
+                "file_path": "results\\newspawn2\\MoveToTarget\\MoveToTarget-20004.onnx",
+                "reward": null,
+                "creation_time": 1670450149.1389682,
+                "auxillary_file_paths": [
+                    "results\\newspawn2\\MoveToTarget\\MoveToTarget-20004.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 20004,
+            "file_path": "results\\newspawn2\\MoveToTarget.onnx",
+            "reward": null,
+            "creation_time": 1670450149.1389682,
+            "auxillary_file_paths": [
+                "results\\newspawn2\\MoveToTarget\\MoveToTarget-20004.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.7.1+cu110"
+    }
+}

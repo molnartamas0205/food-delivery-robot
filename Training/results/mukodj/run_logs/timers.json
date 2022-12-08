@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1670442173",
+        "python_version": "3.7.15 (default, Nov  9 2022, 10:44:37) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\molna\\anaconda3\\envs\\unity\\Scripts\\mlagents-learn MoveToTarget.yaml --run-id=mukodj",
+        "mlagents_version": "0.28.0",
+        "mlagents_envs_version": "0.28.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.1+cu110",
+        "numpy_version": "1.21.6",
+        "end_time_seconds": "1670442183"
+    },
+    "total": 9.8694781,
+    "count": 1,
+    "self": 0.017120900000000105,
+    "children": {
+        "run_training.setup": {
+            "total": 0.14820270000000013,
+            "count": 1,
+            "self": 0.14820270000000013
+        },
+        "TrainerController.start_learning": {
+            "total": 9.7041545,
+            "count": 1,
+            "self": 0.00016700000000113846,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 9.7039716,
+                    "count": 1,
+                    "self": 9.7039716
+                },
+                "TrainerController._save_models": {
+                    "total": 1.589999999929148e-05,
+                    "count": 1,
+                    "self": 1.589999999929148e-05
+                }
+            }
+        }
+    }
+}

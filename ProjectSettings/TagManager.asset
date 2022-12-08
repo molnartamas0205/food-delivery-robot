@@ -8,6 +8,9 @@ TagManager:
   - Wall
   - Sidewalk
   - Crosswalk
+  - Street
+  - FarWall
+  - SideWalkLeft
   layers:
   - Default
   - TransparentFX
